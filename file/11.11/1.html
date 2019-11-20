@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<div v-abc @click='btn' style="height: 100px;background: red;"></div>
+		</div>
+	</body>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			directives:{
+				abc:{
+					bind:function(el,binding){
+						console.log(this)
+					}
+				}
+			},
+			methods:{
+				btn(){
+					console.log(this)
+				}
+			}
+		})
+	</script>
+</html>

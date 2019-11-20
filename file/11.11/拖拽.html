@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				border: none;
+				outline: none;
+				text-decoration: none;
+			}
+			[v-cloak]{
+				display: none;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: lime;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 200px;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" v-cloak="" v-abc>
+			
+		</div>
+		
+
+	</body>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>	
+	<script type="text/javascript">
+		Vue.directive('abc',(a,b)=>{
+			console.log(a,b)
+			a.onmousedown=function(e){
+				var evt = e || event
+				
+				var lx = evt.offsetX
+				var ly = evt.offsetY
+				
+				console.log(lx,ly)
+				document.onmousemove=function(e){
+					var evt = e || event
+					var wx = evt.clientX
+					var wy = evt.clientY
+					console.log(wx,wy)
+					a.style.top=wy-ly + 'px'
+					a.style.left=wx-lx + 'px'
+				}
+				
+			}
+			window.onmouseup=function(){
+				document.onmousemove = null
+			}
+		})
+		
+		
+		
+		new Vue({
+			el:'#box'
+		})
+		
+		
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<lee></lee>
+		</div>
+		
+		<template id="no1">
+			<div>
+				<button @click="btn">按钮</button>
+				<p>{{num}}</p>
+			</div>
+		</template>
+	</body>
+	<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component('lee',{
+			template:'#no1',
+			data(){
+				return {
+					num:0
+				}
+			},
+			methods:{
+				btn(){
+					this.num++
+				}
+			}
+		})
+		
+		
+		new Vue({
+			el:'#box'
+		})
+	</script>
+</html>
